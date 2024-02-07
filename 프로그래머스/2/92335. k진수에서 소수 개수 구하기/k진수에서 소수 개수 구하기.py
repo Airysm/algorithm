@@ -1,6 +1,6 @@
 import math
 
-def check_prime_num(n):
+def check_prime(n):
     if n < 2:
         return False
     for i in range(2, int(math.sqrt(n))+1):
@@ -17,9 +17,9 @@ def solution(n, k):
         n = n//k
     
     for num in n_k.split('0'):
-        if len(num) == 0:
+        if not num:
             continue
-        elif check_prime_num(int(num)):
+        elif check_prime(int(num)):
             answer += 1
         
     return answer
