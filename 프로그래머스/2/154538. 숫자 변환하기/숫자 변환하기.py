@@ -3,8 +3,6 @@ def solution(x, y, n):
     dp[x] = 0
     
     for v in range(x, y+1):
-        if dp[v] == 1e8:
-            continue
         if v + n <= y:
             dp[v+n] = min(dp[v+n], dp[v] + 1)
         if v * 2 <= y:
@@ -12,7 +10,4 @@ def solution(x, y, n):
         if v * 3 <= y:
             dp[v*3] = min(dp[v*3], dp[v] + 1)
     
-    if dp[y] == 1e8:
-        return -1
-    
-    return dp[y]
+    return dp[y] if dp[y] < 1e8 else -1
