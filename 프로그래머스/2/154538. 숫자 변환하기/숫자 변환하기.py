@@ -1,21 +1,18 @@
 def solution(x, y, n):
-    count = 0
-    s = set()
-    s.add(x)
+    dp = [1e8 for _ in range(y+1)]
+    dp[x] = 0
     
-    while s:
-        if y in s:
-            return count
-        nv = set()
-        
-        for v in s:
-            if v + n <= y:
-                nv.add(v+n)
-            if v * 2 <= y:
-                nv.add(v*2)
-            if v * 3 <= y:
-                nv.add(v*3)
-        s = nv
-        count += 1
-        
-    return -1
+    for v in range(x, y+1):
+        if dp[v] == 1e8:
+            continue
+        if v + n <= y:
+            dp[v+n] = min(dp[v+n], dp[v] + 1)
+        if v * 2 <= y:
+            dp[v*2] = min(dp[v*2], dp[v] + 1)
+        if v * 3 <= y:
+            dp[v*3] = min(dp[v*3], dp[v] + 1)
+    
+    if dp[y] == 1e8:
+        return -1
+    
+    return dp[y]
