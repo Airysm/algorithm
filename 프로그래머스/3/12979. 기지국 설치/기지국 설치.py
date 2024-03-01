@@ -5,8 +5,11 @@ def solution(n, stations, w):
     now = 1
     
     for station in stations:
-        answer += math.ceil((station-w-now)/(w*2+1))
+        if station-w-now > 0:
+            answer += math.ceil((station-w-now)/(w*2+1))
         now = station + w + 1
-    answer += math.ceil((n-now+1)/(w*2+1))
+    
+    if n-now+1 > 0:
+        answer += math.ceil((n-now+1)/(w*2+1))
             
     return answer
