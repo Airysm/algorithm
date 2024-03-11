@@ -5,8 +5,6 @@ def solution(sticker):
     
     if len(sticker) == 1:
         return sticker[0]
-    elif len(sticker) == 2:
-        return max(sticker[0], sticker[1])
     
     dp[0] = sticker[0]
     dp[1] = max(sticker[0], sticker[1])
