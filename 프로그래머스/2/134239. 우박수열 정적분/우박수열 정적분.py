@@ -1,6 +1,7 @@
 def solution(k, ranges):
     answer = []
     list_k = []
+    area = [0]
     count = 0
     
     while k > 1:
@@ -10,6 +11,9 @@ def solution(k, ranges):
         list_k.append((temp+k)/2)
         count += 1
     
+    for i in range(len(list_k)):
+        area.append(area[-1] + list_k[i])
+    
     for r1, r2 in ranges:
         if r2 <= 0:
             r2 = r2+count
@@ -18,6 +22,6 @@ def solution(k, ranges):
         elif r1 > r2:
             answer.append(-1.0)
         else:
-            answer.append(sum(list_k[r1:r2]))
+            answer.append(area[r2]-area[r1])
         
     return answer
