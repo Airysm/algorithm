@@ -2,8 +2,7 @@ def make_correct_u(u, v):
     result = '('
     result += solution(v)
     result += ')'
-    u = u[1:-1]
-    for i in u:
+    for i in u[1:-1]:
         if i == '(':    result += ')'
         else:           result += '('
     return result
@@ -35,12 +34,11 @@ def divide_p(p):
 def make_correct_p(u):
     u, v = divide_p(u)
     if check_correct_p(u):
-        return u + make_correct_p(v)
+        return u + solution(v)
     else:
         return make_correct_u(u, v)
 
 def solution(p):
-    
     if len(p) == 0:
         return ''
     elif check_correct_p(p):
