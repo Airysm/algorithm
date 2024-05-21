@@ -1,35 +1,33 @@
-import java.util.*;
+import java.util.ArrayList;
 
 class Solution {
     public int[] solution(int[] progresses, int[] speeds) {
-        List<Integer> list = new ArrayList<>();
-        int[] remain_days = new int[progresses.length];
+        ArrayList<Integer> answer_list = new ArrayList<>();
+        int[] progress_days = new int[progresses.length];
         
         for (int i = 0; i < progresses.length; i++) {
-            int remain = 100 - progresses[i];
-            remain_days[i] = remain / speeds[i];
-            if (remain % speeds[i] != 0)
-                remain_days[i] += 1;
-        }
-        
-        int max_days = remain_days[0];
-        int count = 1;
-        
-        for (int i = 1; i < remain_days.length; i++) {
-            if (max_days < remain_days[i]) {
-                list.add(count);
-                count = 1;
-                max_days = remain_days[i];
-            }
+            if ((100-progresses[i]) % speeds[i] == 0)
+                progress_days[i] = (100-progresses[i]) / speeds[i];
             else
-                count += 1;
+                progress_days[i] = (100-progresses[i]) / speeds[i] + 1;
         }
-        list.add(count);
         
-        int[] answer = new int[list.size()];
+        int max_day = progress_days[0];
+        int count = 1;
+        for (int i = 1; i < progress_days.length; i++) {
+            if (progress_days[i] > max_day) {
+                answer_list.add(count);
+                max_day = progress_days[i];
+                count = 1;
+            } else
+                count++;
+        }
+        if (count > 0)
+            answer_list.add(count);
         
-        for (int i = 0; i < list.size(); i++)
-            answer[i] = list.get(i);
+        int[] answer = new int[answer_list.size()];
+        for (int i = 0; i < answer_list.size(); i++)
+            answer[i] = answer_list.get(i);
         
         return answer;
     }
