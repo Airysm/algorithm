@@ -7,12 +7,7 @@ def solution(prices):
         for j in range(i, len(prices)):
             sec += 1
             if prices[i] > prices[j]:
-                answer.append(sec)
-                flag = False
                 break
-        if flag:
-            answer.append(sec)
-        else:
-            flag = True
+        answer.append(sec)
             
     return answer
