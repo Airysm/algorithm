@@ -1,14 +1,16 @@
 class Solution {
     public String solution(String s) {
         String[] temp = s.split(" ");
-        int max, min, n;
-        max = min = Integer.parseInt(temp[0]);
-        for(int i = 0; i < temp.length; i++) {
-            n = Integer.parseInt(temp[i]);
-            if(min > n) min = n;
-            if(max < n) max = n;
+        int maxNum, minNum;
+        maxNum = minNum = Integer.parseInt(temp[0]);
+        int n = 0;
+        
+        for (String num : temp) {
+            n = Integer.parseInt(num);
+            if (maxNum < n) maxNum = n;
+            if (minNum > n) minNum = n;
         }
         
-        return min+" "+max;
+        return minNum + " " + maxNum;
     }
 }
