@@ -7,17 +7,14 @@ class Solution {
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == '(')
                 st.push('(');
-            else if (s.charAt(i) == ')') {
+            else {
                 if (st.isEmpty())
                     return false;
-                else if (!st.isEmpty() && st.peek() == '(')
+                else if (st.peek() == '(')
                     st.pop();
             }
         }
         
-        if (!st.isEmpty())
-            return false;
-
-        return true;
+        return st.isEmpty();
     }
 }
