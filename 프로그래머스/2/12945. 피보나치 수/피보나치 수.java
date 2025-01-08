@@ -1,8 +1,5 @@
 class Solution {
     public int solution(int n) {
-        if (n <= 1)
-            return n;
-        
         int[] memo = new int[n+1];
         memo[0] = 0;
         memo[1] = 1;
