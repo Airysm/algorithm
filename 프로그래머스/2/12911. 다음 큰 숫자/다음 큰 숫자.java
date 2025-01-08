@@ -1,23 +1,25 @@
 class Solution {
     public int solution(int n) {
-        int count = count1(n);
-        
-        for (int i = n+1; i <= 1000000; i++)
-            if (count1(i) == count)
-                return i;
-                
-        return 0;
+        int answer = 0;
+        int CountOne = toBinaryCountOne(n);
+        for (int i = n + 1;;i++) {
+            int temp = toBinaryCountOne(i);
+            if (CountOne == temp) {
+                answer = i;
+                break;
+            }
+        }
+        return answer;
     }
     
-    public int count1(int num) {
-        int count = 0;
-        
-        String binary = Integer.toBinaryString(num);
-        for (int i = 0; i < binary.length(); i++) {
-            if (binary.charAt(i) == '1')
-                count++;
+    public int toBinaryCountOne(int num) {
+        int one = 0;
+        while (num > 0) {
+            if (num%2 == 1)
+                one++;
+            num /= 2;
         }
         
-        return count;
+        return one;
     }
 }
