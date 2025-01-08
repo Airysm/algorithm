@@ -1,17 +1,15 @@
 class Solution {
     public int solution(int n) {
         int answer = 0;
-        
+        int sum;
         for (int i = 1; i <= n; i++) {
-            int sum = 0;
-            for (int j = i; j <= n; j++) {
+            sum = 0;
+            for (int j = i; sum < n; j++)
                 sum += j;
-                if (sum == n)
-                    answer += 1;
-                else if (sum > n)
-                    break;
-            }
+            if (sum == n)
+                    answer++;
         }
+        
         return answer;
     }
 }
