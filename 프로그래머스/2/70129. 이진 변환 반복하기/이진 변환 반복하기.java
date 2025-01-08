@@ -1,18 +1,17 @@
 class Solution {
     public int[] solution(String s) {
-        int count = 0;
-        int count0 = 0;
+        int zero = 0;
+        int num = 0;
         
         while (!s.equals("1")) {
-            int count1 = 0;
+            int one = 0;
             for (int i = 0; i < s.length(); i++) {
-                if (s.charAt(i) == '1') count1 += 1;
-                else                    count0 += 1;
+                if (s.charAt(i) == '0')         zero++;
+                else if (s.charAt(i) == '1')    one++;
             }
-            s = Integer.toBinaryString(count1);
-            count += 1;
+            s = Integer.toBinaryString(one);
+            num++;
         }
-        
-        return new int[] {count, count0};
+        return new int[] {num, zero};
     }
 }
