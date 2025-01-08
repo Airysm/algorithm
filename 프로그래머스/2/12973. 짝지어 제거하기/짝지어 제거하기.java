@@ -6,15 +6,12 @@ class Solution
     {
         Stack<Character> st = new Stack<>();
         
-        for (char c : s.toCharArray()) {
-            if (st.isEmpty())
-                st.push(c);
-            else if (st.peek() == c)
-                st.pop();
-            else
-                st.push(c);
+        for (int i = 0; i < s.length(); i++) {
+            if (st.isEmpty())                   st.push(s.charAt(i));
+            else if (st.peek() == s.charAt(i))  st.pop();
+            else                                st.push(s.charAt(i));
         }
-            
+
         return st.isEmpty() ? 1 : 0;
     }
 }
