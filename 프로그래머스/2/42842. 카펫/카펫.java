@@ -1,18 +1,19 @@
 class Solution {
     public int[] solution(int brown, int yellow) {
-        int[] answer = new int[2];
+        int[] answer = {0, 0};
         int area = brown + yellow;
-        int h = 0;
         
-        for (int w = 1; w < area; w++) {
-            if (area % w == 0) {
-                h = area / w;
-                if (brown == 2*(w-2)+2*h) {
-                    answer[0] = w;
-                    answer[1] = h;
+        for (int i = 1; i < area/2+1; i++) {
+            if (area % i == 0) {
+                int j = area / i;
+                if (i*2 + j*2 - 4 == brown) {
+                    answer[0] = j;
+                    answer[1] = i;
+                    break;
                 }
             }
         }
+            
         return answer;
     }
 }
